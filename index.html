@@ -1,0 +1,819 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<title>Halit Gök — Portfolyo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+
+:root{
+  --bg:#0E1013; --bg2:#141821; --surface:#171B22; --surface2:#1C212A;
+  --border:#262C36; --border2:#323947;
+  --text:#EAEBEE; --text2:#A9B0BC; --text3:#71798A;
+  --accent:#5FE3C4; --accent2:#F0A860;
+  --mono:'IBM Plex Mono', ui-monospace, monospace;
+  --sans:'IBM Plex Sans', system-ui, sans-serif;
+  --disp:'Space Grotesk', var(--sans);
+}
+*{box-sizing:border-box}
+body{margin:0}
+a{color:var(--accent);text-decoration:none}
+a:hover{color:#8FF0DA}
+::selection{background:var(--accent);color:#08110F}
+.page{width:100%;min-height:100vh;background:var(--bg);color:var(--text);font-family:var(--sans);
+  background-image:radial-gradient(circle,#20262f 1px,transparent 1px);
+  background-size:26px 26px; background-position:-4px -4px;}
+
+/* ---- nav ---- */
+.nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;
+  gap:24px;padding:18px 48px;background:rgba(14,16,19,0.86);backdrop-filter:blur(10px);
+  border-bottom:1px solid var(--border);}
+.brand{display:flex;align-items:center;gap:12px;}
+.brand-mark{width:38px;height:38px;border-radius:8px;background:var(--surface2);border:1px solid var(--border2);
+  display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:13px;color:var(--accent);
+  letter-spacing:0.02em;}
+.brand-name{font-family:var(--disp);font-weight:600;font-size:16px;letter-spacing:0.01em;color:var(--text);}
+.brand-role{font-family:var(--mono);font-size:11px;color:var(--text3);margin-top:1px;}
+.nav-links{display:flex;gap:32px;overflow-x:auto;font-family:var(--mono);font-size:13px;color:var(--text2);}
+.nav-links a{color:var(--text2);white-space:nowrap;}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{display:flex;gap:10px;flex-shrink:0}
+.btn{font-family:var(--mono);font-size:12px;padding:9px 16px;border-radius:7px;border:1px solid var(--border2);
+  color:var(--text);white-space:nowrap;}
+.btn:hover{border-color:var(--accent);color:var(--accent)}
+.btn-solid{background:var(--accent);color:#08110F;border-color:var(--accent);font-weight:600;}
+.btn-solid:hover{background:#8FF0DA;color:#08110F}
+
+/* ---- hero ---- */
+.hero{padding:96px 48px 64px;max-width:1180px;margin:0 auto;}
+.eyebrow{font-family:var(--mono);font-size:13px;color:var(--accent);letter-spacing:0.08em;text-transform:uppercase;
+  display:flex;align-items:center;gap:10px;}
+.eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 0 4px rgba(95,227,196,0.15);}
+.hero h1{font-family:var(--disp);font-size:64px;line-height:1.03;font-weight:700;margin:20px 0 6px;color:var(--text);}
+.hero .role{font-family:var(--disp);font-size:24px;color:var(--text2);font-weight:500;margin:0 0 22px;}
+.hero .loc{font-family:var(--mono);font-size:13px;color:var(--text3);margin:0 0 28px;}
+.hero-lede{max-width:680px;font-size:16px;line-height:1.7;color:var(--text2);margin-bottom:36px;}
+.contact-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:52px;}
+.pill{display:flex;align-items:center;gap:8px;font-family:var(--mono);font-size:13px;color:var(--text);
+  border:1px solid var(--border2);border-radius:999px;padding:9px 16px 9px 14px;background:var(--surface);}
+.pill:hover{border-color:var(--accent);color:var(--accent)}
+.pill svg{width:14px;height:14px;flex-shrink:0}
+.hero-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);
+  border:1px solid var(--border);border-radius:12px;overflow:hidden;}
+.hero-stat{background:var(--surface);padding:22px 20px;}
+.hero-stat .n{font-family:var(--disp);font-size:30px;font-weight:700;color:var(--accent);}
+.hero-stat .k{font-family:var(--mono);font-size:12px;color:var(--text3);margin-top:4px;}
+
+/* ---- section shell ---- */
+.section{max-width:1180px;margin:0 auto;padding:64px 48px;border-top:1px solid var(--border);}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;gap:24px;margin-bottom:40px;flex-wrap:wrap;}
+.section-num{font-family:var(--mono);font-size:13px;color:var(--text3);}
+.section h2{font-family:var(--disp);font-size:34px;font-weight:700;margin:6px 0 0;color:var(--text);}
+
+/* ---- about ---- */
+.about-grid{display:flex;gap:56px;flex-wrap:wrap;}
+.about-text{flex:1 1 480px;font-size:16px;line-height:1.8;color:var(--text2);}
+.about-side{flex:0 0 260px;display:flex;flex-direction:column;gap:14px;}
+.side-card{border:1px solid var(--border);border-radius:10px;padding:18px 20px;background:var(--surface);}
+.side-card .k{font-family:var(--mono);font-size:11px;color:var(--text3);text-transform:uppercase;letter-spacing:0.06em;}
+.side-card .v{font-family:var(--disp);font-size:16px;color:var(--text);margin-top:6px;}
+
+/* ---- skills ---- */
+.skills-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;}
+.skill-card{border:1px solid var(--border);border-radius:12px;padding:22px 24px;background:var(--surface);}
+.skill-card h4{font-family:var(--disp);font-size:16px;margin:0 0 14px;color:var(--text);}
+.chip-row{display:flex;flex-wrap:wrap;gap:8px;}
+.chip{font-family:var(--mono);font-size:12px;color:var(--text2);border:1px solid var(--border2);
+  border-radius:6px;padding:6px 10px;background:var(--bg2);}
+
+/* ---- projects ---- */
+.project-toc{display:flex;flex-direction:column;border:1px solid var(--border);border-radius:12px;
+  overflow:hidden;margin-bottom:56px;}
+.toc-item{display:flex;align-items:center;gap:16px;padding:16px 22px;font-family:var(--disp);font-size:15px;
+  color:var(--text2);border-bottom:1px solid var(--border);background:var(--surface);}
+.toc-item:last-child{border-bottom:none}
+.toc-item:hover{color:var(--accent);background:var(--surface2)}
+.toc-num{font-family:var(--mono);font-size:12px;color:var(--text3);}
+
+.project{border:1px solid var(--border);border-radius:16px;background:var(--surface);padding:36px 40px;
+  margin-bottom:28px;scroll-margin-top:90px;}
+.project-head{display:flex;gap:24px;margin-bottom:24px;}
+.project-num{font-family:var(--disp);font-size:44px;font-weight:700;color:var(--border2);flex-shrink:0;
+  line-height:1;}
+.project-tag{display:inline-block;font-family:var(--mono);font-size:11px;letter-spacing:0.06em;
+  padding:5px 11px;border-radius:5px;margin-bottom:10px;}
+.tag-solo{background:rgba(95,227,196,0.12);color:var(--accent);border:1px solid rgba(95,227,196,0.3);}
+.tag-team{background:rgba(240,168,96,0.12);color:var(--accent2);border:1px solid rgba(240,168,96,0.3);}
+.project h3{font-family:var(--disp);font-size:24px;font-weight:600;margin:0 0 10px;color:var(--text);
+  line-height:1.25;}
+.project-summary{font-size:15px;line-height:1.7;color:var(--text2);margin:0;max-width:820px;}
+
+.stat-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:1px;background:var(--border);
+  border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:28px;}
+.stat{background:var(--bg2);padding:14px 16px;}
+.stat-val{font-family:var(--mono);font-size:15px;color:var(--accent);font-weight:500;}
+.stat-key{font-family:var(--mono);font-size:11px;color:var(--text3);margin-top:3px;}
+
+.project-body{display:flex;flex-direction:column;gap:22px;margin-bottom:26px;}
+.subsection h4{font-family:var(--disp);font-size:14px;font-weight:600;color:var(--text2);margin:0 0 10px;
+  text-transform:uppercase;letter-spacing:0.04em;}
+.bullets{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;}
+.bullets li{position:relative;padding-left:18px;font-size:14px;line-height:1.65;color:var(--text2);}
+.bullets li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:1px;background:var(--accent);}
+.bullets strong{color:var(--text);font-weight:600;}
+
+.gallery{display:flex;flex-wrap:wrap;gap:14px;}
+.gallery figure{margin:0;border:1px solid var(--border2);border-radius:10px;overflow:hidden;background:var(--bg2);}
+.gallery img{display:block;width:100%;height:auto;background:#fff;}
+.gallery figcaption{font-family:var(--mono);font-size:11px;color:var(--text3);padding:9px 12px;
+  border-top:1px solid var(--border2);}
+.img-wide{width:100%;}
+.img-half{width:calc(50% - 7px);}
+.img-third{width:calc(33.333% - 10px);}
+.img-quarter{width:calc(25% - 11px);}
+
+/* ---- footer / contact ---- */
+.footer{background:var(--bg2);border-top:1px solid var(--border);}
+.footer-inner{max-width:1180px;margin:0 auto;padding:72px 48px 48px;}
+.footer-head{display:flex;justify-content:space-between;gap:32px;flex-wrap:wrap;margin-bottom:44px;}
+.footer h2{font-family:var(--disp);font-size:32px;margin:0 0 12px;color:var(--text);max-width:520px;}
+.footer p{font-size:15px;color:var(--text2);max-width:460px;line-height:1.7;margin:0;}
+.footer-contacts{display:flex;flex-direction:column;gap:12px;}
+.footer-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;padding-top:28px;
+  border-top:1px solid var(--border);font-family:var(--mono);font-size:12px;color:var(--text3);}
+
+@media (max-width: 860px){
+  .nav{padding:14px 20px}
+  .nav-links{display:none}
+  .hero{padding:56px 20px 40px}
+  .hero h1{font-size:40px}
+  .hero .role{font-size:18px}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .section{padding:44px 20px}
+  .about-grid{gap:32px}
+  .skills-grid{grid-template-columns:1fr}
+  .project{padding:24px 20px}
+  .project-head{flex-direction:column;gap:8px}
+  .project-num{font-size:28px}
+  .img-half,.img-third,.img-quarter{width:100%}
+  .footer-inner{padding:48px 20px 32px}
+  .footer-head{flex-direction:column}
+}
+
+</style>
+</head>
+<body>
+<div class="page">
+
+  <nav class="nav">
+    <div class="brand">
+      <div class="brand-mark">HG</div>
+      <div>
+        <div class="brand-name">Halit Gök</div>
+        <div class="brand-role">EE Mühendisliği · 4. Sınıf</div>
+      </div>
+    </div>
+    <div class="nav-links">
+          <a href="#hakkimda">Hakkımda</a>
+          <a href="#beceriler">Beceriler</a>
+          <a href="#projeler">Projeler</a>
+          <a href="#iletisim">İletişim</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn" href="https://www.linkedin.com/in/halit-gok/">LinkedIn</a>
+      <a class="btn btn-solid" href="mailto:gokhalit19@gmail.com">İletişime Geç</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="eyebrow">Elektrik-Elektronik Mühendisliği Portfolyosu</div>
+    <h1>Halit Gök</h1>
+    <p class="role">Donanım Tasarımı &amp; Güç Elektroniği Mühendisi Adayı</p>
+    <p class="loc">Abdullah Gül Üniversitesi · Kayseri, Türkiye</p>
+    <p class="hero-lede">Abdullah Gül Üniversitesi Elektrik-Elektronik Mühendisliği 4. sınıf öğrencisiyim. Güç elektroniği, PCB tasarımı, sinyal işleme ve gömülü sistemler üzerine bireysel ve ekip projeleri geliştiriyorum — Altium Designer, LTspice, MATLAB ve FastAPI ile uçtan uca uygulamalar kuruyorum.</p>
+    <div class="contact-row">
+      <a class="pill" href="mailto:gokhalit19@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> gokhalit19@gmail.com</a>
+      <a class="pill" href="tel:+905514838645"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg> +90 551 483 8645</a>
+      <a class="pill" href="https://www.linkedin.com/in/halit-gok/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7.5 10.5v6M7.5 7.5v.01M11.5 16.5v-4a2 2 0 0 1 4 0v4M11.5 12.5v4"/></svg> linkedin.com/in/halit-gok</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="n">8</div><div class="k">Proje</div></div>
+      <div class="hero-stat"><div class="n">3</div><div class="k">Bireysel Proje</div></div>
+      <div class="hero-stat"><div class="n">5</div><div class="k">Grup Projesi</div></div>
+      <div class="hero-stat"><div class="n">10+</div><div class="k">Araç &amp; Platform</div></div>
+    </div>
+  </header>
+
+  <section class="section" id="hakkimda">
+    <div class="section-head">
+      <div><div class="section-num">01</div><h2>Hakkımda</h2></div>
+    </div>
+    <div class="about-grid">
+      <p class="about-text">Abdullah Gül Üniversitesi Elektrik-Elektronik Mühendisliği 4. sınıf öğrencisiyim. Akademik hayatım boyunca donanım tasarımı, güç elektroniği, analog/dijital devre tasarımı ve sinyal işleme alanlarında hem bireysel hem de ekip projeleri geliştirdim. Uygulama ağırlıklı, sonuç odaklı ve öğrenmeye açık bir çalışma anlayışını benimsiyorum. Altium Designer ile PCB tasarımı, LTC7801 tabanlı buck converter simülasyonları, LTspice/MATLAB tabanlı devre ve sinyal analizleri ile FastAPI tabanlı görüntü işleme uygulamaları teknik yetkinliklerimin somut örneklerini oluşturuyor. Grup projelerinde sorumluluk almaktan çekinmeyen, disiplinli ve uyumlu bir çalışma tarzını benimsiyorum. Bu portföyde üzerinde çalıştığım başlıca bireysel ve grup projelerini bulabilirsiniz.</p>
+      <div class="about-side">
+        <div class="side-card"><div class="k">Okul</div><div class="v">Abdullah Gül Üniversitesi</div></div>
+        <div class="side-card"><div class="k">Bölüm</div><div class="v">Elektrik-Elektronik Mühendisliği</div></div>
+        <div class="side-card"><div class="k">Sınıf</div><div class="v">4. Sınıf</div></div>
+        <div class="side-card"><div class="k">Konum</div><div class="v">Kayseri, Türkiye</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="beceriler">
+    <div class="section-head">
+      <div><div class="section-num">02</div><h2>Teknik Beceriler</h2></div>
+    </div>
+    <div class="skills-grid">
+        <div class="skill-card">
+          <h4>Donanım / PCB</h4>
+          <div class="chip-row">
+            <span class="chip">Altium Designer</span>
+            <span class="chip">KiCad</span>
+            <span class="chip">Şematik &amp; Layout Tasarımı</span>
+            <span class="chip">Kütüphane Oluşturma</span>
+            <span class="chip">DRC</span>
+            <span class="chip">Gerber / BOM</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Simülasyon</h4>
+          <div class="chip-row">
+            <span class="chip">LTspice</span>
+            <span class="chip">Ansys Maxwell (FEA)</span>
+            <span class="chip">CST</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Yazılım</h4>
+          <div class="chip-row">
+            <span class="chip">MATLAB</span>
+            <span class="chip">Python</span>
+            <span class="chip">FastAPI</span>
+            <span class="chip">Plotly</span>
+          </div>
+        </div>
+        <div class="skill-card">
+          <h4>Uzmanlık Alanları</h4>
+          <div class="chip-row">
+            <span class="chip">Güç Elektroniği</span>
+            <span class="chip">Analog / Dijital Devre Tasarımı</span>
+            <span class="chip">Sinyal İşleme</span>
+            <span class="chip">Antenler</span>
+            <span class="chip">Gömülü Sistemler</span>
+          </div>
+        </div>
+    </div>
+  </section>
+
+  <section class="section" id="projeler">
+    <div class="section-head">
+      <div><div class="section-num">03</div><h2>Projeler</h2></div>
+    </div>
+    <div class="project-toc">
+          <a href="#proje-01" class="toc-item"><span class="toc-num">01</span>Yüksek Verimli DC-DC Buck Konvertör Tasarımı</a>
+          <a href="#proje-02" class="toc-item"><span class="toc-num">02</span>STM32 Nucleo ve Arduino Uyumlu I2C Shield PCB Tasarımı</a>
+          <a href="#proje-03" class="toc-item"><span class="toc-num">03</span>Kapasitif Basınç Sensörü ve Analog Okuma Devresi Tasarımı</a>
+          <a href="#proje-04" class="toc-item"><span class="toc-num">04</span>4 Elemanlı Dipol Fazlı Dizi (Phased Array) Anten Tasarımı ve Analizi</a>
+          <a href="#proje-05" class="toc-item"><span class="toc-num">05</span>Üç Fazlı 30 kVA Shell-Type Güç Transformatörünün FEA ile Tasarımı ve Optimizasyonu</a>
+          <a href="#proje-06" class="toc-item"><span class="toc-num">06</span>Switchable Counter &amp; Variable Pulse Generator</a>
+          <a href="#proje-07" class="toc-item"><span class="toc-num">07</span>Dijital Stetoskop</a>
+          <a href="#proje-08" class="toc-item"><span class="toc-num">08</span>ScaleUp: Görüntü İşleme ile Otomatik 3D Morfolojik Analiz Sistemi</a>
+    </div>
+    <article class="project" id="proje-01">
+      <div class="project-head">
+        <div class="project-num">01</div>
+        <div class="project-headtext">
+          <span class="project-tag tag-solo">BİREYSEL PROJE</span>
+          <h3>Yüksek Verimli DC-DC Buck Konvertör Tasarımı</h3>
+          <p class="project-summary">Endüstriyel uygulamalar için tasarlanmış, yüksek akım kapasiteli ve verimlilik odaklı bir düşürücü (Buck) tip DC-DC dönüştürücü projesidir. Ana kontrolcü olarak LTC7801 kullanılmış; komponent seçimi ve devre kararlılığı simülasyonlarla doğrulanmıştır.</p>
+        </div>
+      </div>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-val">12 V</div>
+            <div class="stat-key">V_in</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">5 V</div>
+            <div class="stat-key">V_out</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">6 A</div>
+            <div class="stat-key">I_out</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">%92.3</div>
+            <div class="stat-key">Verim</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">200 kHz</div>
+            <div class="stat-key">f_sw</div>
+          </div>
+        </div>
+      <div class="project-body">
+      <div class="subsection">
+        <h4>Teknik Özellikler ve Hesaplamalar</h4>
+        <ul class="bullets">
+          <li><strong>Giriş/Çıkış Parametreleri:</strong> 12 V nominal girişten 5 V sabit çıkış gerilimi ve 6 A sürekli çıkış akımı hedeflenmiştir.</li>
+          <li><strong>Anahtarlama Frekansı:</strong> Anahtarlama kayıplarını optimize etmek için sistem 200 kHz'te çalışacak şekilde yapılandırılmıştır.</li>
+          <li><strong>Endüktör Seçimi:</strong> Akım dalgalanmasını (ripple) %30 sınırında tutmak için yapılan hesaplamalar sonucu 10 µH (I_sat &gt; 8A) endüktör seçilmiştir.</li>
+          <li><strong>Verimlilik Analizi:</strong> Isıl analiz ve simülasyonlar sonucunda sistemin yaklaşık %92.3 verimle çalıştığı, toplam kaybın ~1 W olduğu gözlemlenmiştir.</li>
+          <li><strong>Koruma Devreleri:</strong> UVLO ve OVLO koruma eşikleri sırasıyla 7.5 V ve 16 V olarak ayarlanmıştır.</li>
+        </ul>
+      </div>
+      <div class="subsection">
+        <h4>Kazanılan Yetkinlikler</h4>
+        <ul class="bullets">
+          <li>Güç elektroniği komponent seçimi (MOSFET, endüktör, kapasitör ESR hesaplamaları).</li>
+          <li>LTspice üzerinde gelişmiş simülasyon ve verimlilik analizi.</li>
+          <li>Geri besleme (feedback) ve kontrol döngüsü tasarımı.</li>
+        </ul>
+      </div>
+      </div>
+        <div class="gallery">
+          <figure class="img-wide">
+            <img src="images/p1-ltspice-devre.png" alt="Şekil 1 — LTspice devresi" loading="lazy">
+            <figcaption>Şekil 1 — LTspice devresi</figcaption>
+          </figure>
+          <figure class="img-half">
+            <img src="images/p1-vout-vin.png" alt="Şekil 2a — Vout/Vin karşılaştırması" loading="lazy">
+            <figcaption>Şekil 2a — Vout/Vin karşılaştırması</figcaption>
+          </figure>
+          <figure class="img-half">
+            <img src="images/p1-ripple.png" alt="Şekil 2b — Ripple ölçümü" loading="lazy">
+            <figcaption>Şekil 2b — Ripple ölçümü</figcaption>
+          </figure>
+        </div>
+    </article>
+    <article class="project" id="proje-02">
+      <div class="project-head">
+        <div class="project-num">02</div>
+        <div class="project-headtext">
+          <span class="project-tag tag-solo">BİREYSEL PROJE</span>
+          <h3>STM32 Nucleo ve Arduino Uyumlu I2C Shield PCB Tasarımı</h3>
+          <p class="project-summary">“Altium Designer ile A'dan Z'ye PCB Tasarımı” eğitimi kapsamında geliştirilen bir donanım projesidir. Shield, STM32 Nucleo ve Arduino kartlarıyla tam uyumlu çalışacak şekilde, I2C protokolü üzerinden haberleşen modüllerin kolayca entegre edilmesi için tasarlanmıştır.</p>
+        </div>
+      </div>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-val">I2C</div>
+            <div class="stat-key">Protokol</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">STM32 / Arduino</div>
+            <div class="stat-key">Uyumluluk</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">Altium Designer</div>
+            <div class="stat-key">Araç</div>
+          </div>
+        </div>
+      <div class="project-body">
+      <div class="subsection">
+        <h4>Teknik Detaylar ve Kazanımlar</h4>
+        <ul class="bullets">
+          <li><strong>Şematik ve PCB Tasarımı:</strong> Hiyerarşik şematik çizimi ve sinyal bütünlüğüne uygun layout tasarımı gerçekleştirildi.</li>
+          <li><strong>Kütüphane Oluşturma:</strong> Standart dışı komponentler için özel footprint ve sembol kütüphaneleri hazırlandı.</li>
+          <li><strong>DRC (Design Rule Check):</strong> Üretim öncesi hata payını en aza indirmek için kapsamlı tasarım kuralı kontrolleri uygulandı.</li>
+          <li><strong>Üretim Dosyaları:</strong> Sanayi standartlarında Gerber ve BOM (malzeme listesi) dosyaları hazırlandı.</li>
+        </ul>
+      </div>
+      <div class="subsection">
+        <h4>Kullanılan Araçlar</h4>
+        <ul class="bullets">
+          <li><strong>Tasarım:</strong> Altium Designer</li>
+          <li><strong>Simülasyon:</strong> LTspice</li>
+          <li><strong>Donanım:</strong> STM32 Nucleo, Arduino, I2C sensörler</li>
+        </ul>
+      </div>
+      </div>
+        <div class="gallery">
+          <figure class="img-third">
+            <img src="images/p2-pcb-1.jpg" alt="Şekil 3a — Altium Designer görünümü" loading="lazy">
+            <figcaption>Şekil 3a — Altium Designer görünümü</figcaption>
+          </figure>
+          <figure class="img-third">
+            <img src="images/p2-pcb-2.jpg" alt="Şekil 3b — Altium Designer görünümü" loading="lazy">
+            <figcaption>Şekil 3b — Altium Designer görünümü</figcaption>
+          </figure>
+          <figure class="img-third">
+            <img src="images/p2-pcb-3.jpg" alt="Şekil 3c — Altium Designer görünümü" loading="lazy">
+            <figcaption>Şekil 3c — Altium Designer görünümü</figcaption>
+          </figure>
+        </div>
+    </article>
+    <article class="project" id="proje-03">
+      <div class="project-head">
+        <div class="project-num">03</div>
+        <div class="project-headtext">
+          <span class="project-tag tag-team">GRUP PROJESİ</span>
+          <h3>Kapasitif Basınç Sensörü ve Analog Okuma Devresi Tasarımı</h3>
+          <p class="project-summary">Özel tasarım bir kapasitif sensörden gelen fiziksel basınç değişimlerini ölçülebilir bir DC voltaja dönüştüren üç aşamalı analog sinyal işleme sistemi tasarlanmış ve fiziksel olarak gerçeklenmiştir. Proje, sensör-devre entegrasyonu ve sinyal koşullandırma süreçlerini kapsamaktadır.</p>
+        </div>
+      </div>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-val">3 katmanlı</div>
+            <div class="stat-key">Aşama</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">DC voltaj</div>
+            <div class="stat-key">Çıkış</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">LTspice + breadboard</div>
+            <div class="stat-key">Doğrulama</div>
+          </div>
+        </div>
+      <div class="project-body">
+      <div class="subsection">
+        <h4>Sistem Mimarisi ve Çalışma Prensibi</h4>
+        <ul class="bullets">
+          <li><strong>Sinyal Üretimi (Wien Bridge Oscillator):</strong> Parazitik empedansların etkisini en aza indirmek için kararlı bir sinüzoidal dalga üretilmiştir; yüksek frekans, sensör hassasiyetini artırmıştır.</li>
+          <li><strong>Kazanç Aşaması (Common-Emitter Amplifier):</strong> Kapasitif sensör, yükseltecin emitör bypass yoluna entegre edilmiş; basınçla değişen kapasitans emitör empedansını değiştirerek kazancı modüle eder.</li>
+          <li><strong>Çıkış Katı (Peak Detector):</strong> Yükseltilmiş AC sinyal, ADC birimleriyle arayüzlenebilmesi için kararlı bir DC voltaj seviyesine dönüştürülmüştür.</li>
+        </ul>
+      </div>
+      <div class="subsection">
+        <h4>Teknik Analiz ve Sonuçlar</h4>
+        <ul class="bullets">
+          <li><strong>Doğrusallık:</strong> Sistem, ADC birimleri için ideal olan doğrusal bir çıkış tepkisi vermiştir.</li>
+          <li><strong>Simülasyon vs. Gerçek:</strong> LTspice simülasyonları ile fiziksel prototip sonuçları yüksek oranda örtüşmüş; breadboard üzerindeki parazitik etkiler ve tolerans farkları optimize edilmiştir.</li>
+        </ul>
+      </div>
+      <div class="subsection">
+        <h4>Kullanılan Yetkinlikler</h4>
+        <ul class="bullets">
+          <li>Analog devre tasarımı (osilatörler, yükselteçler), sensör karakterizasyonu, LTspice simülasyonu ve fiziksel prototipleme (breadboard testleri).</li>
+        </ul>
+      </div>
+      </div>
+        <div class="gallery">
+          <figure class="img-half">
+            <img src="images/p3-sensor-1.png" alt="Şekil 4a — Kapasitif sensörün son hali" loading="lazy">
+            <figcaption>Şekil 4a — Kapasitif sensörün son hali</figcaption>
+          </figure>
+          <figure class="img-half">
+            <img src="images/p3-sensor-2.png" alt="Şekil 4b — Sensörün iç yapısı" loading="lazy">
+            <figcaption>Şekil 4b — Sensörün iç yapısı</figcaption>
+          </figure>
+          <figure class="img-wide">
+            <img src="images/p3-ce-amp.png" alt="Şekil 5 — CE amplifier devresinin LTspice görüntüsü" loading="lazy">
+            <figcaption>Şekil 5 — CE amplifier devresinin LTspice görüntüsü</figcaption>
+          </figure>
+          <figure class="img-third">
+            <img src="images/p3-sim-1.png" alt="Şekil 6a — LTspice simülasyon sonucu" loading="lazy">
+            <figcaption>Şekil 6a — LTspice simülasyon sonucu</figcaption>
+          </figure>
+          <figure class="img-third">
+            <img src="images/p3-sim-2.png" alt="Şekil 6b — LTspice simülasyon sonucu" loading="lazy">
+            <figcaption>Şekil 6b — LTspice simülasyon sonucu</figcaption>
+          </figure>
+          <figure class="img-third">
+            <img src="images/p3-sim-3.png" alt="Şekil 6c — LTspice simülasyon sonucu" loading="lazy">
+            <figcaption>Şekil 6c — LTspice simülasyon sonucu</figcaption>
+          </figure>
+          <figure class="img-wide">
+            <img src="images/p3-breadboard.png" alt="Şekil 7 — Breadboard üzerinde kurulmuş fiziksel devre" loading="lazy">
+            <figcaption>Şekil 7 — Breadboard üzerinde kurulmuş fiziksel devre</figcaption>
+          </figure>
+          <figure class="img-quarter">
+            <img src="images/p3-osc-1.png" alt="Şekil 8a — Osiloskop ölçümü" loading="lazy">
+            <figcaption>Şekil 8a — Osiloskop ölçümü</figcaption>
+          </figure>
+          <figure class="img-quarter">
+            <img src="images/p3-osc-2.png" alt="Şekil 8b — Osiloskop ölçümü" loading="lazy">
+            <figcaption>Şekil 8b — Osiloskop ölçümü</figcaption>
+          </figure>
+          <figure class="img-quarter">
+            <img src="images/p3-osc-3.png" alt="Şekil 8c — Osiloskop ölçümü" loading="lazy">
+            <figcaption>Şekil 8c — Osiloskop ölçümü</figcaption>
+          </figure>
+          <figure class="img-quarter">
+            <img src="images/p3-osc-4.png" alt="Şekil 8d — Osiloskop ölçümü" loading="lazy">
+            <figcaption>Şekil 8d — Osiloskop ölçümü</figcaption>
+          </figure>
+        </div>
+    </article>
+    <article class="project" id="proje-04">
+      <div class="project-head">
+        <div class="project-num">04</div>
+        <div class="project-headtext">
+          <span class="project-tag tag-team">GRUP PROJESİ</span>
+          <h3>4 Elemanlı Dipol Fazlı Dizi (Phased Array) Anten Tasarımı ve Analizi</h3>
+          <p class="project-summary">EE404 Antenler dersi kapsamında, 4 elemanlı yarım dalga dipol bir fazlı dizi (phased array) antenin tasarımı, matematiksel modellemesi ve simülasyonla doğrulanması gerçekleştirilmiştir. Dizinin ışıma karakteristiği hem analitik olarak hem de CST ortamında incelenmiş, uygulanan faz kaymalarıyla ana hüzmenin yönlendirilmesi (beam steering) analiz edilmiştir.</p>
+        </div>
+      </div>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-val">N = 4</div>
+            <div class="stat-key">Eleman Sayısı</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">d = λ/4</div>
+            <div class="stat-key">Aralık</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">0°–45°</div>
+            <div class="stat-key">Faz Taraması</div>
+          </div>
+        </div>
+      <div class="project-body">
+      <div class="subsection">
+        <h4>Teknik Detaylar ve Uygulamalar</h4>
+        <ul class="bullets">
+          <li><strong>Dizi Faktörü (Array Factor) Türetimi:</strong> N=4 elemanlı, d=λ/4 aralıklı doğrusal dizi için array factor analitik olarak türetilmiş; toplam anten paterni, dipol eleman paterni ile dizi faktörünün çarpımı (E_total = E_element × AF) olarak hesaplanmıştır.</li>
+          <li><strong>MATLAB Modellemesi:</strong> Eleman sayısı, aralık, ilerleyen faz kayması ve frekansı parametre olarak alan bir MATLAB fonksiyonu yazılmış; dizi faktörü ve toplam patern hem lineer hem polar grafiklerle görselleştirilmiştir.</li>
+          <li><strong>Hüzme Yönlendirme (Beam Steering):</strong> Φ = 0°, 15°, 30° ve 45° ilerleyen faz kaymaları için paternler karşılaştırılmış; Φ=0°'da broadside ışıma, artan faz kaymasıyla ana hüzmenin taranması gözlemlenmiştir.</li>
+          <li><strong>CST ile Doğrulama:</strong> MATLAB sonuçları CST Array Calculator simülasyonlarıyla karşılaştırılarak analitik model doğrulanmıştır.</li>
+        </ul>
+      </div>
+      <div class="subsection">
+        <h4>Kazanılan Yetkinlikler</h4>
+        <ul class="bullets">
+          <li>Dizi anten teorisi ve ışıma paterni analizi, MATLAB ile antenlerin matematiksel modellenmesi, hüzme yönlendirme (phased array) kavramları ve CST tabanlı elektromanyetik simülasyon.</li>
+        </ul>
+      </div>
+      </div>
+        <div class="gallery">
+          <figure class="img-wide">
+            <img src="images/p4-array-factor.png" alt="Şekil 9 — Dizi faktörü (Array Factor): lineer ve polar gösterim (N=4, d=λ/4, Φ=0°)" loading="lazy">
+            <figcaption>Şekil 9 — Dizi faktörü (Array Factor): lineer ve polar gösterim (N=4, d=λ/4, Φ=0°)</figcaption>
+          </figure>
+          <figure class="img-wide">
+            <img src="images/p4-pattern.png" alt="Şekil 10 — Toplam dizi anten paterni (kırmızı) ve tekil dipol eleman paterni (kesikli)" loading="lazy">
+            <figcaption>Şekil 10 — Toplam dizi anten paterni (kırmızı) ve tekil dipol eleman paterni (kesikli)</figcaption>
+          </figure>
+        </div>
+    </article>
+    <article class="project" id="proje-05">
+      <div class="project-head">
+        <div class="project-num">05</div>
+        <div class="project-headtext">
+          <span class="project-tag tag-team">GRUP PROJESİ</span>
+          <h3>Üç Fazlı 30 kVA Shell-Type Güç Transformatörünün FEA ile Tasarımı ve Optimizasyonu</h3>
+          <p class="project-summary">35 kV / 10 kV, 50 Hz, 30 kVA gücünde üç fazlı bir shell-type güç transformatörünün manyetik devre teorisiyle boyutlandırılması, Ansys Maxwell 2D ortamında sonlu elemanlar analizi (FEA) ile modellenmesi ve farklı yük koşullarında verim optimizasyonu gerçekleştirilmiştir.</p>
+        </div>
+      </div>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-val">30 kVA</div>
+            <div class="stat-key">Güç</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">35 kV / 10 kV</div>
+            <div class="stat-key">Gerilim</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">50 Hz</div>
+            <div class="stat-key">Frekans</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">≈1.67 T</div>
+            <div class="stat-key">B_max</div>
+          </div>
+        </div>
+      <div class="project-body">
+      <div class="subsection">
+        <h4>Teknik Detaylar ve Uygulamalar</h4>
+        <ul class="bullets">
+          <li><strong>Analitik Boyutlandırma:</strong> EMK denkleminden çekirdek kesit alanı, sarım oranı ve akım yoğunluğu kısıtına göre iletken kesiti hesaplanmıştır.</li>
+          <li><strong>Manyetik Malzeme Analizi:</strong> Yönlendirilmiş silisli çelik (M19_29G) çekirdeğin B-H eğrisi incelenmiş; çekirdeğin derin doygunluğa girmeden diz (knee) bölgesinde çalıştığı doğrulanmıştır (H_max ≈ 8420 A/m, B ≈ 1.67 T).</li>
+          <li><strong>FEA Modellemesi:</strong> Ansys Maxwell 2D ile akı dağılımı, çekirdek kayıpları ve bakır kayıpları farklı koşullarda değerlendirilmiştir.</li>
+          <li><strong>Eşdeğer Devre Çıkarımı:</strong> Açık devre (OC) ve kısa devre (SC) testleriyle mıknatıslama endüktansı, kaçak endüktanslar ve sargı dirençleri elde edilmiştir (ör. R_f ≈ 5.24 MΩ, X_m ≈ 170.34 kΩ, Z_eq ≈ 470.62 Ω).</li>
+          <li><strong>Verim Analizi:</strong> %25, %50, %75 ve %100 yük ile PF=1, 0.9 ve 0.8 endüktif koşulları için verim hesaplanmış; tasarımın tüm yük koşullarında yüksek verim sağladığı gösterilmiştir.</li>
+        </ul>
+      </div>
+      <div class="subsection">
+        <h4>Kazanılan Yetkinlikler</h4>
+        <ul class="bullets">
+          <li>Güç transformatörü tasarımı ve manyetik devre analizi, Ansys Maxwell ile FEA, çekirdek/bakır kaybı ve verim optimizasyonu, OC/SC testleriyle eşdeğer devre parametre çıkarımı.</li>
+        </ul>
+      </div>
+      </div>
+        <div class="gallery">
+          <figure class="img-half">
+            <img src="images/p5-fea.png" alt="Şekil 11a — Ansys Maxwell manyetik alan şiddeti dağılımı" loading="lazy">
+            <figcaption>Şekil 11a — Ansys Maxwell manyetik alan şiddeti dağılımı</figcaption>
+          </figure>
+          <figure class="img-half">
+            <img src="images/p5-bh.png" alt="Şekil 11b — M19_29G B-H eğrisi" loading="lazy">
+            <figcaption>Şekil 11b — M19_29G B-H eğrisi</figcaption>
+          </figure>
+        </div>
+    </article>
+    <article class="project" id="proje-06">
+      <div class="project-head">
+        <div class="project-num">06</div>
+        <div class="project-headtext">
+          <span class="project-tag tag-team">GRUP PROJESİ</span>
+          <h3>Switchable Counter &amp; Variable Pulse Generator</h3>
+          <p class="project-summary">Zamanlama üniteleri, CMOS tabanlı mantık devreleri ve analog kontrol sistemlerinin bir araya getirilmesiyle oluşturulmuş kompleks bir mühendislik çalışmasıdır. Sistem; kararlı saat sinyali üretimi, sinyal yönlendirme (multiplexing), BCD sayıcı ve analog görev döngüsü (duty cycle) kontrolü aşamalarından oluşmaktadır.</p>
+        </div>
+      </div>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-val">NE555 · 2 Hz</div>
+            <div class="stat-key">Saat Sinyali</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">BCD 00–99</div>
+            <div class="stat-key">Sayıcı</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">CMOS transistör seviyesi</div>
+            <div class="stat-key">Mantık</div>
+          </div>
+        </div>
+      <div class="project-body">
+      <div class="subsection">
+        <h4>Teknik Detaylar ve Uygulamalar</h4>
+        <ul class="bullets">
+          <li><strong>Zamanlama Ünitesi (NE555):</strong> Astable modda çalışan NE555 ile 2 Hz'te kararlı kare dalga üretilmiş; %50 duty cycle için diyot tabanlı tasarımlar ve hassas direnç kalibrasyonları LTspice ile doğrulanmıştır.</li>
+          <li><strong>Transistör Seviyesi Mantık (CMOS MUX):</strong> 2-yollu MUX, NMOS (2N7002) ve PMOS (BS250P) çiftlerinden oluşan Transmission Gate yapısıyla transistör seviyesinde tasarlanmış, sinyal bozulması en aza indirilmiştir.</li>
+          <li><strong>Ardışıl Mantık ve BCD Sayıcı:</strong> 8 adet D tipi flip-flop ile 00–99 sayan BCD sayıcı tasarlanmış; kontrol anahtarı (SC) ile 1'er/2'şer artış sağlanmış, sonuçlar 74LS47 dekoderlerle 7-segment display'lerde gösterilmiştir.</li>
+          <li><strong>Analog Kontrol (Duty Cycle Controller):</strong> RC filtre, Op-Amp ve potansiyometreyle dijital kare dalga, görev döngüsüne bağlı değişen analog voltaja dönüştürülmüştür.</li>
+        </ul>
+      </div>
+      <div class="subsection">
+        <h4>Kullanılan Yetkinlikler</h4>
+        <ul class="bullets">
+          <li>Transistör seviyesinde CMOS mantığı ve ardışıl devre tasarımı, karma sinyal (mixed-signal) işleme, karmaşık sistemlerin LTspice'ta modüler ve bütünleşik analizi.</li>
+        </ul>
+      </div>
+      </div>
+        <div class="gallery">
+          <figure class="img-wide">
+            <img src="images/p6-ltspice.png" alt="Şekil 12 — LTspice devresi" loading="lazy">
+            <figcaption>Şekil 12 — LTspice devresi</figcaption>
+          </figure>
+          <figure class="img-half">
+            <img src="images/p6-sim-1.jpg" alt="Şekil 13a — LTspice simülasyon sonucu" loading="lazy">
+            <figcaption>Şekil 13a — LTspice simülasyon sonucu</figcaption>
+          </figure>
+          <figure class="img-half">
+            <img src="images/p6-sim-2.png" alt="Şekil 13b — LTspice simülasyon sonucu" loading="lazy">
+            <figcaption>Şekil 13b — LTspice simülasyon sonucu</figcaption>
+          </figure>
+          <figure class="img-third">
+            <img src="images/p6-breadboard.jpg" alt="Şekil 14 — Devrenin breadboard üzerinde kurulmuş hali" loading="lazy">
+            <figcaption>Şekil 14 — Devrenin breadboard üzerinde kurulmuş hali</figcaption>
+          </figure>
+        </div>
+    </article>
+    <article class="project" id="proje-07">
+      <div class="project-head">
+        <div class="project-num">07</div>
+        <div class="project-headtext">
+          <span class="project-tag tag-team">GRUP PROJESİ</span>
+          <h3>Dijital Stetoskop</h3>
+          <p class="project-summary">Kalp ve akciğer seslerini gerçek zamanlı dinlemek, görselleştirmek ve analiz etmek amacıyla geliştirilmiş biyomedikal bir sistemdir. Analog aktif filtre tasarımı ile donanım katmanı, MATLAB tabanlı bir arayüz (GUI) ile de yazılım ve teşhis katmanı bir araya getirilmiştir.</p>
+        </div>
+      </div>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-val">Low-pass + Band-pass</div>
+            <div class="stat-key">Filtre Tipi</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">MATLAB GUI</div>
+            <div class="stat-key">Arayüz</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">FFT / Spektrum</div>
+            <div class="stat-key">Analiz</div>
+          </div>
+        </div>
+      <div class="project-body">
+      <div class="subsection">
+        <h4>Teknik Uygulamalar ve Özellikler</h4>
+        <ul class="bullets">
+          <li><strong>Analog Sinyal İşleme:</strong> Kalp ve akciğer seslerinin karakteristik frekans aralıklarını yakalamak için hassas aktif filtreler (low-pass ve band-pass) tasarlanmış, ortam gürültüsü bastırılmıştır.</li>
+          <li><strong>Elektronik Filtreleme:</strong> Ham veriler elektronik olarak filtrelenmiş; sinyalin saf hâli ile filtrelenmiş hâli karşılaştırılmıştır.</li>
+          <li><strong>MATLAB GUI Tasarımı:</strong> Arayüz; ham sinyalin zaman domeni görüntüsünü, filtrelenmiş sinyali ve frekans spektrumunu (FFT) eş zamanlı sunar.</li>
+          <li><strong>Klinik Karar Destek:</strong> Astım gibi solunum yolu hastalıklarında erken teşhise yardımcı olacak şekilde sinyal formları incelenmiştir.</li>
+        </ul>
+      </div>
+      <div class="subsection">
+        <h4>Kazanılan Yetkinlikler</h4>
+        <ul class="bullets">
+          <li>Biyomedikal sinyal işleme, MATLAB App Designer ile kullanıcı arayüzü tasarımı, FFT ve spektrum analizi ile veri yorumlama.</li>
+        </ul>
+      </div>
+      </div>
+        <div class="gallery">
+          <figure class="img-third">
+            <img src="images/p7-kicad.jpg" alt="Şekil 15 — KiCad devre görüntüsü" loading="lazy">
+            <figcaption>Şekil 15 — KiCad devre görüntüsü</figcaption>
+          </figure>
+          <figure class="img-wide">
+            <img src="images/p7-ltspice.png" alt="Şekil 16 — LTspice simülasyon görüntüsü" loading="lazy">
+            <figcaption>Şekil 16 — LTspice simülasyon görüntüsü</figcaption>
+          </figure>
+          <figure class="img-wide">
+            <img src="images/p7-gui.jpg" alt="Şekil 17 — Kalp sinyallerinin tasarlanan GUI'de gösterimi" loading="lazy">
+            <figcaption>Şekil 17 — Kalp sinyallerinin tasarlanan GUI'de gösterimi</figcaption>
+          </figure>
+          <figure class="img-quarter">
+            <img src="images/p7-product-1.jpg" alt="Şekil 18a — Lehimlenip ürünleştirilmiş hâli" loading="lazy">
+            <figcaption>Şekil 18a — Lehimlenip ürünleştirilmiş hâli</figcaption>
+          </figure>
+          <figure class="img-quarter">
+            <img src="images/p7-product-2.png" alt="Şekil 18b — Lehimlenip ürünleştirilmiş hâli" loading="lazy">
+            <figcaption>Şekil 18b — Lehimlenip ürünleştirilmiş hâli</figcaption>
+          </figure>
+          <figure class="img-quarter">
+            <img src="images/p7-product-3.png" alt="Şekil 18c — Lehimlenip ürünleştirilmiş hâli" loading="lazy">
+            <figcaption>Şekil 18c — Lehimlenip ürünleştirilmiş hâli</figcaption>
+          </figure>
+          <figure class="img-quarter">
+            <img src="images/p7-product-4.png" alt="Şekil 18d — Lehimlenip ürünleştirilmiş hâli" loading="lazy">
+            <figcaption>Şekil 18d — Lehimlenip ürünleştirilmiş hâli</figcaption>
+          </figure>
+        </div>
+    </article>
+    <article class="project" id="proje-08">
+      <div class="project-head">
+        <div class="project-num">08</div>
+        <div class="project-headtext">
+          <span class="project-tag tag-team">GRUP PROJESİ</span>
+          <h3>ScaleUp: Görüntü İşleme ile Otomatik 3D Morfolojik Analiz Sistemi</h3>
+          <p class="project-summary">Malzeme bilimi ve farmasötik endüstrileri için geliştirilen ScaleUp; 2D mikroskopi görüntülerinden 3D morfolojik verileri düşük maliyetli ve tam otomatik şekilde çıkaran bir yazılım çözümüdür. Manuel analizdeki öznelliği ortadan kaldırarak parçacıkların fiziksel özelliklerini yüksek hassasiyetle dijitalleştirir.</p>
+        </div>
+      </div>
+        <div class="stat-row">
+          <div class="stat">
+            <div class="stat-val">17</div>
+            <div class="stat-key">Metrik/Parçacık</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">FastAPI + Plotly</div>
+            <div class="stat-key">Altyapı</div>
+          </div>
+          <div class="stat">
+            <div class="stat-val">Otsu Thresholding</div>
+            <div class="stat-key">Segmentasyon</div>
+          </div>
+        </div>
+      <div class="project-body">
+      <div class="subsection">
+        <h4>Teknik Mimari ve Algoritmalar</h4>
+        <ul class="bullets">
+          <li><strong>Görüntü İşleme:</strong> Segmentasyon için Otsu Eşikleme (Otsu Thresholding) ve bağlı bileşen analizi kullanılmış; derinlik bilgisi yoğunluk tabanlı haritalama (intensity-based depth mapping) ile elde edilmiştir.</li>
+          <li><strong>Yüksek Performanslı Altyapı:</strong> Mimari FastAPI ve Plotly üzerine kurgulanarak yüzlerce parçacığın saniyeler içinde işlenmesi ve görselleştirilmesi sağlanmıştır.</li>
+          <li><strong>Veri Analizi:</strong> Her parçacık için 17 farklı metrik (hacim, yüzey alanı, çap vb.) hesaplanmakta ve sonuçlar anlık olarak dışa aktarılabilmektedir.</li>
+        </ul>
+      </div>
+      <div class="subsection">
+        <h4>Kazanılan Yetkinlikler</h4>
+        <ul class="bullets">
+          <li>Bilgisayarlı görü (computer vision) algoritmalarının mühendislik problemlerine uygulanması, FastAPI ile ölçeklenebilir API mimarisi, Plotly ile interaktif 3D veri görselleştirme.</li>
+        </ul>
+      </div>
+      </div>
+        <div class="gallery">
+          <figure class="img-wide">
+            <img src="images/p8-microscopy.png" alt="Şekil 19 — 10 µm gri tonlamalı 2D mikroskopik görüntü ve sonuçlar" loading="lazy">
+            <figcaption>Şekil 19 — 10 µm gri tonlamalı 2D mikroskopik görüntü ve sonuçlar</figcaption>
+          </figure>
+          <figure class="img-wide">
+            <img src="images/p8-3d.png" alt="Şekil 20 — 2D'den 3D'ye dönüştürülmüş hâli" loading="lazy">
+            <figcaption>Şekil 20 — 2D'den 3D'ye dönüştürülmüş hâli</figcaption>
+          </figure>
+          <figure class="img-wide">
+            <img src="images/p8-particles.png" alt="Şekil 21 — Seçilen parçacıkların 3D görüntüsü" loading="lazy">
+            <figcaption>Şekil 21 — Seçilen parçacıkların 3D görüntüsü</figcaption>
+          </figure>
+          <figure class="img-wide">
+            <img src="images/p8-excel.png" alt="Şekil 22 — Excel sonuç örneği" loading="lazy">
+            <figcaption>Şekil 22 — Excel sonuç örneği</figcaption>
+          </figure>
+        </div>
+    </article>
+  </section>
+
+  <footer class="footer" id="iletisim">
+    <div class="footer-inner">
+      <div class="footer-head">
+        <div>
+          <h2>Birlikte çalışalım</h2>
+          <p>Donanım tasarımı, güç elektroniği veya sinyal işleme üzerine bir proje mi planlıyorsunuz? Aşağıdaki kanallardan bana ulaşabilirsiniz.</p>
+        </div>
+        <div class="footer-contacts">
+          <a class="pill" href="mailto:gokhalit19@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg> gokhalit19@gmail.com</a>
+          <a class="pill" href="tel:+905514838645"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg> +90 551 483 8645</a>
+          <a class="pill" href="https://www.linkedin.com/in/halit-gok/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7.5 10.5v6M7.5 7.5v.01M11.5 16.5v-4a2 2 0 0 1 4 0v4M11.5 12.5v4"/></svg> linkedin.com/in/halit-gok <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M7 17L17 7M9 7h8v8"/></svg></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© Halit Gök</span>
+        <span>Elektrik-Elektronik Mühendisliği · Abdullah Gül Üniversitesi</span>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
